@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>学会運営支援システム（ベータ版）</title>
+    <meta
+      name="description"
+      content="小さな学会の会員名簿・研究大会・年会費・案内メール・名札の印刷・年度の引き継ぎを、お使いのパソコン1台で。名簿はパソコンの外に保存しません。ベータ版は無料です。"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <p class="tag">ベータ版・無料でお試しいただけます</p>
+        <h1>学会運営支援システム</h1>
+        <p class="lead">
+          事務員のいない小さな学会のための、名簿・研究大会・年会費・案内メールの管理アプリです。<br />担当者のパソコン1台で動き、名簿をパソコンの外に保存しません。
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/imoto-421/gakkai-support/releases">Windows版をダウンロード</a>
+          <a class="btn" href="#start">使い始め方</a>
+        </div>
+        <p class="meta">
+          v0.9.2　｜　Windows 10 /
+          11　｜　zipファイル（約170MB）　｜　Mac版は準備中です
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="wrap">
+        <h2>こんな方のために作りました</h2>
+        <ul class="pains">
+          <li>名簿をExcelで管理していて、毎年の担当交代でどれが最新かわからなくなる</li>
+          <li>研究大会の出欠・参加費・懇親会費の入金を、手作業で照らし合わせている</li>
+          <li>年会費の未納者に、一人ずつメールを書いている</li>
+          <li>クラウドの会員管理サービスは、小さな学会には高すぎる</li>
+        </ul>
+      </section>
+
+      <section class="wrap">
+        <h2>できること</h2>
+        <div class="features">
+          <article>
+            <img src="img/m03-members.png" alt="会員名簿の画面" />
+            <h3>会員名簿</h3>
+            <p>
+              今あるExcelの名簿をそのまま取り込めます。会員種別（正会員・学生会員など）は学会ごとに自由に決められます。
+            </p>
+          </article>
+          <article>
+            <img src="img/m06-event.png" alt="研究大会の画面" />
+            <h3>研究大会の受付</h3>
+            <p>
+              出欠、参加費・懇親会費などの料金、入金をまとめて管理。未入金の人がひと目でわかります。
+            </p>
+          </article>
+          <article>
+            <img src="img/m15-badge-sample.png" alt="色の印が付いた名札" />
+            <h3>名札・受付一覧の印刷</h3>
+            <p>
+              名刺用紙に合わせた名札をPDFで作れます。お弁当や懇親会を申し込んだ人には、名札に色の印を付けられます。
+            </p>
+          </article>
+          <article>
+            <img src="img/m09-dues.png" alt="年会費の画面" />
+            <h3>年会費</h3>
+            <p>年度ごとに会員種別別の金額を決め、納入・未納を管理。過去の未納もわかります。</p>
+          </article>
+          <article>
+            <img src="img/m10-compose.png" alt="案内メールの作成画面" />
+            <h3>案内メールの一括送信</h3>
+            <p>
+              ご自身のGmailから、名前などを差し込んだメールを一斉に送れます。未納者や未回答者だけに送ることもできます。
+            </p>
+          </article>
+          <article>
+            <img src="img/m16-societies.png" alt="学会の切り替え" />
+            <h3>年度の引き継ぎ・複数の学会</h3>
+            <p>
+              次の担当者には、ファイル1つ渡すだけ。2つ以上の学会を担当していても、データは混ざりません。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="wrap safe">
+        <h2>名簿はパソコンの外に保存しません</h2>
+        <div class="cols">
+          <p>
+            会員の名前や住所は、<b>担当者のパソコンの中</b>に保存されます。開発者のサーバーはなく、開発者が見ることもできません。インターネットに送るのは、案内メールの宛先・件名・本文だけです（ご自身のGmailから送ります）。
+          </p>
+          <ul>
+            <li>Gmailのアプリパスワードは、Windowsの仕組みで暗号化して保存</li>
+            <li>引き継ぎファイルは、パスワードを付けると強い暗号（AES-256）で暗号化</li>
+            <li>BitLocker（ドライブの暗号化）の状態をアプリで確かめられます</li>
+          </ul>
+        </div>
+        <p>
+          <a href="security.pdf">セキュリティについて（PDF）</a
+          >には、会員の皆さまへのお知らせ文の例も載せています。
+        </p>
+      </section>
+
+      <section class="wrap" id="start">
+        <h2>使い始め方</h2>
+        <ol class="steps">
+          <li>
+            <b>ダウンロードしたzipファイルを右クリックし、「すべて展開」を選びます。</b
+            >できたフォルダを、デスクトップなど好きな場所に置きます。
+          </li>
+          <li><b>フォルダの中の「GakkaiSupport.exe」をダブルクリックします。</b></li>
+          <li>
+            <b
+              >青い画面「WindowsによってPCが保護されました」が出たときは、「詳細情報」を押してから「実行」を押します。</b
+            >個人で作っているアプリのため、Windowsが発行元を確認できずに表示されます。2回目からは出ません。
+          </li>
+          <li>
+            <b>利用規約に同意し、学会名を入れれば始められます。</b>くわしくは<a href="manual.pdf"
+              >使い方説明書（PDF）</a
+            >をご覧ください。
+          </li>
+        </ol>
+      </section>
+
+      <section class="wrap beta">
+        <h2>ベータ版について</h2>
+        <ul>
+          <li>
+            いまはベータ版（試用版）です。<b>ベータ版のあいだは無料</b>で、すべての機能をお使いいただけます。
+          </li>
+          <li>
+            不具合が残っている可能性があります。「設定」の「引き継ぎファイルを書き出す」で、こまめに控えを取ってください。
+          </li>
+          <li>
+            正式版では、お一人につき1回の買い切り（3,000円以内の予定）を考えています。期限はなく、担当する学会の数にも制限はありません。
+          </li>
+        </ul>
+        <p class="cta">
+          <a class="btn primary" href="#">ご意見・不具合・問い合わせを送る</a>
+        </p>
+        <p class="note">
+          ご意見には、会員の氏名やメールアドレスなどの個人情報、アプリパスワードを書かないでください。
+        </p>
+      </section>
+
+      <section class="wrap faq">
+        <h2>よくある質問</h2>
+        <dl>
+          <dt>Macでは使えますか？</dt>
+          <dd>いまはWindows版だけです。Mac版は準備中です。</dd>
+          <dt>大学のGmailでもメールを送れますか？</dt>
+          <dd>
+            はい。Googleの「アプリパスワード」（16文字）を一度設定すれば送れます。大学の設定でアプリパスワードが作れない場合は、学内の情報担当の部署にご相談ください。
+          </dd>
+          <dt>前の担当者のExcel名簿は使えますか？</dt>
+          <dd>
+            はい。氏名・所属・メールアドレス・住所・会員種別の列があれば取り込めます。アプリの中に名簿のひな形もあります。
+          </dd>
+          <dt>新しい版にしたら、データは消えますか？</dt>
+          <dd>
+            消えません。データはアプリとは別の場所に保存されているので、新しい版のフォルダに入れ替えるだけで続きから使えます。
+          </dd>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>
+          <a href="terms.html">利用規約</a>　｜　<a href="privacy.html">プライバシーポリシー</a
+          >　｜　<a href="manual.pdf">使い方説明書</a>　｜　<a href="security.pdf"
+            >セキュリティについて</a
+          >　｜　<a href="#">問い合わせ</a>
+        </p>
+        <p>運営：井元 駿</p>
+      </div>
+    </footer>
+  </body>
+</html>
