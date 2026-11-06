@@ -205,3 +205,29 @@ footer p {
     padding-top: 28px;
   }
 }
+
+/* 特定商取引法に基づく表記 */
+.spec {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+.spec th,
+.spec td {
+  border: 1px solid #d9dee3;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.spec th {
+  width: 11em;
+  background: #f3f5f7;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .spec th,
+  .spec td {
+    display: block;
+    width: auto;
+  }
+}
