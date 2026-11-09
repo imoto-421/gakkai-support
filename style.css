@@ -1,6 +1,6 @@
 /* Hallmark · custom · 配布ページ（学会運営支援システム）· job: download, then buy · signature: スクロールで順に現れる構成と、比べ方の表 · fonts: IBM Plex Sans JP (headings, figures) / BIZ UDPGothic (body)
    critique: 業務ソフトらしい四角い形と青緑の面。押すところだけ山吹色にする。年配の読み手のため文字は大きめ */
-/* Hallmark · dismissed 3 · cols3 holds three short safety facts whose 40px line icons sit above real headings and prose, requested by the reviewer aieuo; widths stay equal because the facts are peers */
+/* Hallmark · dismissed 3 · cols3 holds three short safety facts in bordered panels; each 128px line icon sits faint behind the prose as a watermark at the reviewer aieuo request, and widths stay equal because the facts are peers */
 :root {
   --paper: #fdfefe;
   --tint: #f2f7f6;
@@ -13,6 +13,7 @@
   --cta: #d99a1e; /* 山吹：押すところだけ */
   --cta-deep: #c4870f;
   --cta-ink: #1d1a12;
+  --mark: #f5e2b0; /* 強めたい言葉の下線 */
   --on-main: #f6fbfa;
   --frame: rgba(246, 251, 250, 0.16);
   --shadow: rgba(15, 77, 69, 0.28);
@@ -292,6 +293,14 @@ h3 {
   margin: 0 0 8px;
   color: var(--deep);
 }
+/* 見出しの中で強めたい言葉：色を変え、太い下線を引く */
+.key {
+  color: var(--main);
+  font-weight: 700;
+  font-size: 1.12em;
+  background: linear-gradient(transparent 70%, var(--mark) 70%);
+  padding: 0 2px;
+}
 .lead {
   max-width: 44em;
   margin: -16px auto 40px;
@@ -340,8 +349,21 @@ h3 {
   border: 1px solid var(--rule);
   background: var(--paper);
 }
+.feature h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  margin-bottom: 12px;
+}
+.feature h3::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: var(--cta);
+  margin-bottom: 16px;
+}
 .feature p {
   margin: 0;
+  font-size: 1.06rem;
 }
 
 /* 3つ並び */
@@ -659,21 +681,28 @@ footer:not(.footer) p {
   width: 32px;
   height: 32px;
 }
-.pains li {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 16px;
+/* 困りごと・名簿の安全：アイコンを大きく薄くして、文字の後ろに置く */
+.pains li,
+.cols3 > div {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
-.pains li .ic {
-  grid-row: span 2;
-  width: 36px;
-  height: 36px;
-  margin-top: 4px;
-}
+.pains li .ic,
 .cols3 .ic {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 8px;
+  position: absolute;
+  z-index: -1;
+  right: -12px;
+  bottom: -16px;
+  width: 128px;
+  height: 128px;
+  stroke-width: 1.2;
+  opacity: 0.14;
+}
+.cols3 > div {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 24px 28px 32px;
 }
 .fit h3 {
   display: flex;
