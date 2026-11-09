@@ -1,5 +1,6 @@
 /* Hallmark · custom · 配布ページ（学会運営支援システム）· job: download, then buy · signature: スクロールで順に現れる構成と、比べ方の表 · fonts: BIZ UDPGothic
    critique: 業務ソフトらしい四角い形と青緑の面。押すところだけ山吹色にする。年配の読み手のため文字は大きめ */
+/* Hallmark · dismissed 3 · 名簿の安全の3項目に小さな線のアイコン。aieuo さんの「アイコンを使うとよい」という意見で、見出しと文が主役 */
 :root {
   --paper: #fdfefe;
   --tint: #f2f7f6;
@@ -496,9 +497,6 @@ h3 {
   position: absolute;
   right: 20px;
 }
-.faq details[open] summary::after {
-  content: "－";
-}
 .faq details p {
   margin: 0;
   padding: 16px 20px 8px;
@@ -582,6 +580,18 @@ h3 {
 .terms .cta .btn {
   padding: 12px 28px;
 }
+.terms #buy {
+  justify-content: center;
+  margin: 28px 0;
+}
+.terms #buy .btn {
+  display: flex;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding: 16px 40px;
+  width: min(100%, 420px);
+  text-align: center;
+}
 .terms .btn.primary {
   background: var(--cta);
   color: var(--cta-ink);
@@ -616,6 +626,105 @@ footer:not(.footer) {
 }
 footer:not(.footer) p {
   margin: 0;
+}
+
+/* アイコン（線で描いた小さな絵。意味は文字で書いてあるので読み上げない） */
+.ic {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--main);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.facts .ic {
+  display: block;
+  margin: 0 auto 4px;
+  width: 32px;
+  height: 32px;
+}
+.pains li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 16px;
+}
+.pains li .ic {
+  grid-row: span 2;
+  width: 36px;
+  height: 36px;
+  margin-top: 4px;
+}
+.cols3 .ic {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+.fit h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* よくある質問：開け閉めを滑らかに（対応しているブラウザーだけ） */
+@media (prefers-reduced-motion: no-preference) {
+  .faq {
+    interpolate-size: allow-keywords;
+  }
+  .faq details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 0.3s ease-out,
+      content-visibility 0.3s allow-discrete;
+  }
+  .faq details[open]::details-content {
+    block-size: auto;
+  }
+  .faq summary::after {
+    transition: transform 0.3s ease-out;
+  }
+}
+.faq summary::after {
+  content: "＋";
+}
+.faq details[open] summary::after {
+  content: "＋";
+  transform: rotate(45deg);
+}
+
+/* 購入のボタンを目立たせる */
+.plan-foot {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+.plan-foot p {
+  margin: 0;
+}
+.btn.big {
+  display: flex;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding: 16px 40px;
+  width: min(100%, 420px);
+  text-align: center;
+}
+
+/* お問い合わせフォーム */
+.contact {
+  max-width: 880px;
+}
+.form-frame {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.form-frame iframe {
+  display: block;
+  width: 100%;
+  height: 980px;
+  border: 0;
 }
 
 /* 狭い画面 */
