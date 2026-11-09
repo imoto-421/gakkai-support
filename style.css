@@ -1,6 +1,6 @@
 /* Hallmark · custom · 配布ページ（学会運営支援システム）· job: download, then buy · signature: スクロールで順に現れる構成と、比べ方の表 · fonts: BIZ UDPGothic
    critique: 業務ソフトらしい四角い形と青緑の面。押すところだけ山吹色にする。年配の読み手のため文字は大きめ */
-/* Hallmark · dismissed 3 · 名簿の安全の3項目に小さな線のアイコン。aieuo さんの「アイコンを使うとよい」という意見で、見出しと文が主役 */
+/* Hallmark · dismissed 3 · cols3 holds three short safety facts whose 40px line icons sit above real headings and prose, requested by the reviewer aieuo; widths stay equal because the facts are peers */
 :root {
   --paper: #fdfefe;
   --tint: #f2f7f6;
