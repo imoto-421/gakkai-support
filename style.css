@@ -1,10 +1,12 @@
+/* Hallmark · custom · 配布ページ（学会運営支援システム）· job: download, then buy · signature: 料金を領収書の形で見せる · fonts: BIZ UDPMincho / BIZ UDPGothic
+   critique: 読み手は年配の先生が多い。文字の大きさと行間を最優先し、飾りは領収書の印だけにする */
 /* 学会運営支援システム 配布ページ
    読み手は大学の先生など、年配の方も多い。文字は大きめ、行間は広め。
    見出しは明朝（論文・学会の印刷物の雰囲気）、本文は読みやすさ重視の UD ゴシック。
    色はアプリのアイコンと同じ藍色を基本にし、朱色は「領収書の印」だけに使う。 */
 :root {
   --paper: #f6f8f9;
-  --surface: #ffffff;
+  --surface: #fcfdfd;
   --ink: #1e2a33;
   --muted: #55626c;
   --rule: #d5dde3;
@@ -12,6 +14,10 @@
   --ai-deep: #164666;
   --ai-wash: #e8f0f5;
   --shu: #c8372d; /* 朱：領収書の印だけ */
+  --sheet: #fdfefe; /* 紙・画面写真の下地（真っ白から少し藍に寄せる） */
+  --on-ai: #f7fbfd; /* 藍の上の文字 */
+  --shadow-screen: rgba(22, 70, 102, 0.45);
+  --shadow-paper: rgba(30, 42, 51, 0.5);
   --mincho: "BIZ UDPMincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
   --gothic: "BIZ UDPGothic", "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
 }
@@ -20,6 +26,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -28,6 +35,7 @@ html {
 }
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--gothic);
@@ -62,6 +70,9 @@ h3 {
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.04em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 .small {
   font-size: 0.9rem;
@@ -79,11 +90,11 @@ h3 {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 .btn {
   display: inline-block;
-  padding: 13px 26px;
+  padding: 12px 28px;
   border-radius: 6px;
   border: 2px solid var(--ai);
   background: var(--surface);
@@ -96,14 +107,22 @@ h3 {
   background: var(--ai-wash);
   color: var(--ai-deep);
 }
+.text-link {
+  align-self: center;
+  font-weight: 700;
+  padding: 12px 4px;
+}
+.btn:active {
+  transform: translateY(1px);
+}
 .btn.primary {
   background: var(--ai);
-  color: #fff;
+  color: var(--on-ai);
 }
 .btn.primary:hover {
   background: var(--ai-deep);
   border-color: var(--ai-deep);
-  color: #fff;
+  color: var(--on-ai);
 }
 
 /* はじめの画面 */
@@ -116,7 +135,7 @@ h3 {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: 48px;
+  gap: 40px;
   align-items: center;
 }
 .hero-for {
@@ -127,7 +146,7 @@ h3 {
 .hero h1 {
   font-size: clamp(2rem, 3.9vw, 2.9rem);
   word-break: keep-all;
-  margin: 6px 0 18px;
+  margin: 8px 0 20px;
   letter-spacing: 0.06em;
 }
 .lead {
@@ -147,7 +166,7 @@ h3 {
 .hero-shot > img:first-child {
   border: 1px solid var(--rule);
   border-radius: 8px;
-  box-shadow: 0 18px 40px -24px rgba(22, 70, 102, 0.45);
+  box-shadow: 0 18px 40px -24px var(--shadow-screen);
 }
 /* 名札は、画面の上に一枚置いた印刷物のように */
 .hero-badge {
@@ -155,11 +174,11 @@ h3 {
   width: 46%;
   right: -4%;
   bottom: -40px;
-  background: #fff;
+  background: var(--sheet);
   border: 1px solid var(--rule);
   border-radius: 3px;
   transform: rotate(-3deg);
-  box-shadow: 0 10px 24px -12px rgba(30, 42, 51, 0.5);
+  box-shadow: 0 10px 24px -12px var(--shadow-paper);
 }
 
 /* 各節 */
@@ -180,7 +199,7 @@ h2 {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 40px;
+  gap: 16px 40px;
 }
 .pains li {
   position: relative;
@@ -201,7 +220,7 @@ h2 {
 .feature {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-  gap: 36px;
+  gap: 40px;
   align-items: center;
   padding: 28px 0;
   border-bottom: 1px solid var(--rule);
@@ -218,11 +237,11 @@ h2 {
 .feature img {
   border: 1px solid var(--rule);
   border-radius: 6px;
-  background: #fff;
+  background: var(--sheet);
 }
 .feature h3 {
   font-size: 1.35rem;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 .feature p {
   margin: 0;
@@ -231,9 +250,9 @@ h2 {
 /* 名簿の扱い */
 .safe-body {
   background: var(--ai-wash);
-  border-left: 6px solid var(--ai);
-  padding: 24px 28px;
-  border-radius: 0 6px 6px 0;
+  border: 1px solid var(--rule);
+  padding: 28px 32px;
+  border-radius: 6px;
 }
 .safe-body > p:first-child {
   margin-top: 0;
@@ -257,7 +276,7 @@ h2 {
 .steps li {
   counter-increment: step;
   position: relative;
-  padding: 0 0 22px 64px;
+  padding: 0 0 24px 64px;
   min-height: 70px;
 }
 .steps li::before {
@@ -282,16 +301,16 @@ h2 {
 .price {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: 44px;
+  gap: 40px;
   align-items: center;
 }
 .receipt {
   position: relative;
-  background: #fff;
+  background: var(--sheet);
   border: 1px solid var(--rule);
-  padding: 30px 32px 28px;
+  padding: 32px 32px 28px;
   font-family: var(--mincho);
-  box-shadow: 0 14px 30px -22px rgba(30, 42, 51, 0.55);
+  box-shadow: 0 14px 30px -22px var(--shadow-paper);
 }
 .receipt p {
   margin: 0;
@@ -301,7 +320,7 @@ h2 {
   font-size: 1.4rem;
   letter-spacing: 0.8em;
   padding-left: 0.8em;
-  margin-bottom: 18px !important;
+  margin-bottom: 20px !important;
 }
 .receipt-amount {
   font-size: clamp(2.2rem, 5vw, 2.9rem);
@@ -313,7 +332,7 @@ h2 {
 .receipt-amount span {
   font-size: 1rem;
   font-weight: 400;
-  margin-left: 6px;
+  margin-left: 8px;
 }
 .receipt-for {
   margin-top: 16px !important;
@@ -346,7 +365,7 @@ h2 {
   margin: 0 0 12px;
 }
 .price-text .cta {
-  margin-top: 22px;
+  margin-top: 24px;
 }
 
 /* よくある質問 */
@@ -374,7 +393,7 @@ h2 {
   content: "－";
 }
 .faq details p {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
 }
 .ask {
   margin-top: 24px;
@@ -397,7 +416,7 @@ footer {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 24px;
+  gap: 8px 24px;
 }
 footer p {
   margin: 0;
@@ -427,7 +446,7 @@ footer p {
 .spec th,
 .spec td {
   border: 1px solid var(--rule);
-  padding: 10px 14px;
+  padding: 12px 16px;
   text-align: left;
   vertical-align: top;
 }
