@@ -1,4 +1,4 @@
-/* Hallmark · custom · 配布ページ（学会運営支援システム）· job: download, then buy · signature: スクロールで順に現れる構成と、比べ方の表 · fonts: BIZ UDPGothic
+/* Hallmark · custom · 配布ページ（学会運営支援システム）· job: download, then buy · signature: スクロールで順に現れる構成と、比べ方の表 · fonts: IBM Plex Sans JP (headings, figures) / BIZ UDPGothic (body)
    critique: 業務ソフトらしい四角い形と青緑の面。押すところだけ山吹色にする。年配の読み手のため文字は大きめ */
 /* Hallmark · dismissed 3 · cols3 holds three short safety facts whose 40px line icons sit above real headings and prose, requested by the reviewer aieuo; widths stay equal because the facts are peers */
 :root {
@@ -16,6 +16,7 @@
   --on-main: #f6fbfa;
   --frame: rgba(246, 251, 250, 0.16);
   --shadow: rgba(15, 77, 69, 0.28);
+  --display: "IBM Plex Sans JP", "BIZ UDPGothic", "Yu Gothic UI", "Hiragino Sans", sans-serif;
   --gothic: "BIZ UDPGothic", "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
 }
 * {
@@ -57,7 +58,20 @@ a:hover {
 }
 h1,
 h2,
+h3,
+.logo,
+.facts b,
+.plan-price,
+.steps li::before,
+.closing-title,
+.pains b {
+  font-family: var(--display);
+}
+h1,
+h2,
 h3 {
+  font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1.45;
   text-wrap: balance;
   overflow-wrap: break-word;
@@ -270,7 +284,7 @@ h3 {
 .sec h2 {
   text-align: center;
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
+  font-weight: 500;
   margin: 0 0 44px;
 }
 .sec h3 {
