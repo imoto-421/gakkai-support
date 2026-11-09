@@ -1,12 +1,19 @@
+/* 学会運営支援システム 配布ページ
+   読み手は大学の先生など、年配の方も多い。文字は大きめ、行間は広め。
+   見出しは明朝（論文・学会の印刷物の雰囲気）、本文は読みやすさ重視の UD ゴシック。
+   色はアプリのアイコンと同じ藍色を基本にし、朱色は「領収書の印」だけに使う。 */
 :root {
-  --bg: #f5f4f0;
-  --surface: #fff;
-  --ink: #1f2328;
-  --muted: #5d636b;
-  --line: #dcd9d2;
-  --accent: #1f5f8b;
-  --accent-soft: #e6eff5;
-  --ok: #1a7f37;
+  --paper: #f6f8f9;
+  --surface: #ffffff;
+  --ink: #1e2a33;
+  --muted: #55626c;
+  --rule: #d5dde3;
+  --ai: #1f5f8b; /* 藍：アプリのアイコンの色 */
+  --ai-deep: #164666;
+  --ai-wash: #e8f0f5;
+  --shu: #c8372d; /* 朱：領収書の印だけ */
+  --mincho: "BIZ UDPMincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --gothic: "BIZ UDPGothic", "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -14,217 +21,454 @@
 html {
   scroll-behavior: smooth;
 }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
-  font-family: "Yu Gothic UI", "Hiragino Sans", "Meiryo", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
+  font-family: var(--gothic);
+  font-size: 17px;
+  line-height: 1.9;
+}
+img {
+  max-width: 100%;
+  display: block;
 }
 a {
-  color: var(--accent);
+  color: var(--ai);
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--ai-deep);
+}
+:focus-visible {
+  outline: 3px solid var(--ai);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 .wrap {
-  max-width: 1040px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 20px;
 }
-.hero {
-  background: linear-gradient(180deg, #e6eff5, var(--bg));
-  padding: 64px 0 40px;
-  border-bottom: 1px solid var(--line);
+h1,
+h2,
+h3 {
+  font-family: var(--mincho);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
 }
-.tag {
-  display: inline-block;
-  background: #eef6ea;
-  color: var(--ok);
-  border: 1px solid #c7e1bd;
-  border-radius: 999px;
-  padding: 2px 14px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin: 0;
+.small {
+  font-size: 0.9rem;
 }
-h1 {
-  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
-  margin: 12px 0 8px;
-  letter-spacing: 0.02em;
+.muted {
+  color: var(--muted);
 }
-.lead {
-  font-size: 1.08rem;
-  max-width: 720px;
-  margin: 0 0 24px;
+.note {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
+
+/* ボタン */
 .cta {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 .btn {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 10px;
-  border: 1px solid var(--accent);
+  padding: 13px 26px;
+  border-radius: 6px;
+  border: 2px solid var(--ai);
+  background: var(--surface);
+  color: var(--ai);
   text-decoration: none;
-  font-weight: 600;
-  background: #fff;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.btn:hover {
+  background: var(--ai-wash);
+  color: var(--ai-deep);
 }
 .btn.primary {
-  background: var(--accent);
+  background: var(--ai);
   color: #fff;
 }
 .btn.primary:hover {
-  filter: brightness(1.08);
+  background: var(--ai-deep);
+  border-color: var(--ai-deep);
+  color: #fff;
+}
+
+/* はじめの画面 */
+.hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: 56px 0 64px;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+.hero-for {
+  margin: 0;
+  color: var(--ai);
+  font-weight: 700;
+}
+.hero h1 {
+  font-size: clamp(2rem, 3.9vw, 2.9rem);
+  word-break: keep-all;
+  margin: 6px 0 18px;
+  letter-spacing: 0.06em;
+}
+.lead {
+  font-size: 1.12rem;
+  margin: 0 0 28px;
+  max-width: 34em;
 }
 .meta {
   color: var(--muted);
   font-size: 0.88rem;
   margin: 0;
 }
-main section {
-  padding: 40px 20px 8px;
+.hero-shot {
+  position: relative;
+  margin: 0 0 40px;
 }
-h2 {
-  font-size: 1.45rem;
-  margin: 0 0 18px;
-  padding-left: 12px;
-  border-left: 6px solid var(--accent);
+.hero-shot > img:first-child {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px -24px rgba(22, 70, 102, 0.45);
 }
-.pains {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-.pains li {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 16px 18px;
-}
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-}
-.features article {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  overflow: hidden;
-}
-.features img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: top left;
-  border-bottom: 1px solid var(--line);
-  display: block;
-}
-.features h3 {
-  margin: 14px 18px 4px;
-  font-size: 1.1rem;
-}
-.features p {
-  margin: 0 18px 18px;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.safe .cols {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 8px 32px;
-  background: #eaf6ee;
-  border: 1px solid #b7dfc3;
-  border-radius: 14px;
-  padding: 18px 24px;
-}
-.safe .cols p {
-  margin: 0;
-}
-.safe ul {
-  margin: 0;
-  padding-left: 1.2em;
-}
-.steps {
-  padding-left: 1.4em;
-  margin: 0;
-}
-.steps li {
-  margin-bottom: 10px;
-}
-.beta ul {
-  padding-left: 1.2em;
-}
-.note {
-  color: var(--muted);
-  font-size: 0.88rem;
-}
-.faq dt {
-  font-weight: 700;
-  margin-top: 14px;
-}
-.faq dt::before {
-  content: "Q. ";
-  color: var(--accent);
-}
-.faq dd {
-  margin: 2px 0 0;
-}
-.faq dd::before {
-  content: "A. ";
-  color: var(--ok);
-  font-weight: 700;
-}
-footer {
-  margin-top: 48px;
-  border-top: 1px solid var(--line);
-  padding: 20px 0 32px;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-footer p {
-  margin: 4px 0;
-}
-.terms h3 {
-  margin: 22px 0 6px;
-  font-size: 1.05rem;
-}
-.terms ol {
-  padding-left: 1.5em;
-}
-@media (max-width: 600px) {
-  .hero {
-    padding-top: 40px;
-  }
-  main section {
-    padding-top: 28px;
-  }
+/* 名札は、画面の上に一枚置いた印刷物のように */
+.hero-badge {
+  position: absolute;
+  width: 46%;
+  right: -4%;
+  bottom: -40px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  transform: rotate(-3deg);
+  box-shadow: 0 10px 24px -12px rgba(30, 42, 51, 0.5);
 }
 
-/* 特定商取引法に基づく表記 */
+/* 各節 */
+main > section.wrap {
+  margin-top: 80px;
+}
+h2 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  margin: 0 0 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ai);
+}
+
+/* 困りごと */
+.pains {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 40px;
+}
+.pains li {
+  position: relative;
+  padding-left: 1.6em;
+}
+.pains li::before {
+  content: "";
+  position: absolute;
+  left: 0.2em;
+  top: 0.75em;
+  width: 0.55em;
+  height: 0.55em;
+  background: var(--ai);
+  border-radius: 50%;
+}
+
+/* できること：画面を大きく見せる */
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: 36px;
+  align-items: center;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.feature:last-child {
+  border-bottom: 0;
+}
+.feature:nth-child(odd of .feature) {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+}
+.feature:nth-child(odd of .feature) img {
+  order: 2;
+}
+.feature img {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: #fff;
+}
+.feature h3 {
+  font-size: 1.35rem;
+  margin: 0 0 10px;
+}
+.feature p {
+  margin: 0;
+}
+
+/* 名簿の扱い */
+.safe-body {
+  background: var(--ai-wash);
+  border-left: 6px solid var(--ai);
+  padding: 24px 28px;
+  border-radius: 0 6px 6px 0;
+}
+.safe-body > p:first-child {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+.safe-body ul {
+  margin: 0 0 12px;
+  padding-left: 1.3em;
+}
+.safe-body .small {
+  margin: 0;
+}
+
+/* 使い始め方：本当に順番があるので番号を付ける */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+}
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 22px 64px;
+  min-height: 70px;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--ai);
+  color: var(--ai);
+  font-family: var(--mincho);
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+}
+
+/* 料金：精算に使う「領収書」の形で見せる */
+.price {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 44px;
+  align-items: center;
+}
+.receipt {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 30px 32px 28px;
+  font-family: var(--mincho);
+  box-shadow: 0 14px 30px -22px rgba(30, 42, 51, 0.55);
+}
+.receipt p {
+  margin: 0;
+}
+.receipt-title {
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 0.8em;
+  padding-left: 0.8em;
+  margin-bottom: 18px !important;
+}
+.receipt-amount {
+  font-size: clamp(2.2rem, 5vw, 2.9rem);
+  font-weight: 700;
+  border-bottom: 2px solid var(--ink);
+  padding: 0 8px 4px;
+  letter-spacing: 0.04em;
+}
+.receipt-amount span {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 6px;
+}
+.receipt-for {
+  margin-top: 16px !important;
+}
+.receipt-note {
+  color: var(--muted);
+  font-family: var(--gothic);
+  font-size: 0.9rem;
+}
+/* 「済」の印 */
+.receipt::after {
+  content: "済";
+  position: absolute;
+  right: 24px;
+  top: 20px;
+  width: 58px;
+  height: 58px;
+  border: 3px solid var(--shu);
+  border-radius: 50%;
+  color: var(--shu);
+  font-family: var(--mincho);
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: grid;
+  place-items: center;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+}
+.price-text p {
+  margin: 0 0 12px;
+}
+.price-text .cta {
+  margin-top: 22px;
+}
+
+/* よくある質問 */
+.faq details {
+  border-bottom: 1px solid var(--rule);
+}
+.faq summary {
+  cursor: pointer;
+  padding: 16px 0;
+  font-weight: 700;
+  list-style: none;
+  position: relative;
+  padding-right: 2em;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "＋";
+  position: absolute;
+  right: 4px;
+  color: var(--ai);
+}
+.faq details[open] summary::after {
+  content: "－";
+}
+.faq details p {
+  margin: 0 0 18px;
+}
+.ask {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* フッター */
+footer {
+  margin-top: 88px;
+  border-top: 1px solid var(--rule);
+  background: var(--surface);
+  padding: 28px 0 36px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.footer-links {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+}
+footer p {
+  margin: 0;
+}
+
+/* 規約・プライバシーポリシーなどのページ */
+.terms {
+  padding-top: 36px;
+  max-width: 820px;
+}
+.terms h2 {
+  margin-top: 8px;
+}
+.terms h3 {
+  font-size: 1.15rem;
+  margin: 28px 0 8px;
+}
+.terms ol {
+  padding-left: 1.4em;
+}
 .spec {
   width: 100%;
   border-collapse: collapse;
   margin: 16px 0;
+  background: var(--surface);
 }
 .spec th,
 .spec td {
-  border: 1px solid #d9dee3;
-  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  padding: 10px 14px;
   text-align: left;
   vertical-align: top;
 }
 .spec th {
   width: 11em;
-  background: #f3f5f7;
-  font-weight: 600;
+  background: var(--ai-wash);
+  font-weight: 700;
 }
-@media (max-width: 600px) {
+
+/* スマホ */
+@media (max-width: 820px) {
+  body {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .hero {
+    padding: 36px 0 48px;
+  }
+  .hero-grid,
+  .price,
+  .feature,
+  .feature:nth-child(odd of .feature) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .feature:nth-child(odd of .feature) img {
+    order: 0;
+  }
+  .hero-badge {
+    width: 50%;
+    right: 2%;
+    bottom: -32px;
+  }
+  .pains {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  main > section.wrap {
+    margin-top: 60px;
+  }
   .spec th,
   .spec td {
     display: block;

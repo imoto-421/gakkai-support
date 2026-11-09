@@ -8,102 +8,128 @@
       name="description"
       content="小さな学会の会員名簿・研究大会・年会費・案内メール・名札の印刷・年度の引き継ぎを、お使いのパソコン1台で。名簿はパソコンの外に保存しません。すべての機能を無料で試せます。"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=BIZ+UDPMincho:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="hero">
-      <div class="wrap">
-        <p class="tag">すべての機能を無料でお試しいただけます</p>
-        <h1>学会運営支援システム</h1>
-        <p class="lead">
-          事務員のいない小さな学会のための、名簿・研究大会・年会費・案内メールの管理アプリです。<br />担当者のパソコン1台で動き、名簿をパソコンの外に保存しません。
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="https://github.com/imoto-421/gakkai-support/releases/download/v1.0.0/GakkaiSupport-1.0.0-win.zip">Windows版をダウンロード</a>
-          <a class="btn" href="#start">使い始め方</a>
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="hero-for">事務員のいない、小さな学会の担当者へ</p>
+          <h1>学会運営支援システム</h1>
+          <p class="lead">
+            会員名簿・研究大会の受付・年会費・案内メールを、担当者のパソコン1台で。名簿はパソコンの外に保存しません。
+          </p>
+          <div class="cta">
+            <a
+              class="btn primary"
+              href="https://github.com/imoto-421/gakkai-support/releases/download/v1.0.0/GakkaiSupport-1.0.0-win.zip"
+              >Windows版をダウンロード（無料）</a
+            >
+            <a class="btn" href="#price">料金を見る</a>
+          </div>
+          <p class="meta">
+            v1.0.0／Windows 10・11／zipファイル（約170MB）。すべての機能を無料でお試しいただけます。Mac版は準備中です。
+          </p>
         </div>
-        <p class="meta">
-          v1.0.0　｜　Windows 10 /
-          11　｜　zipファイル（約170MB）　｜　Mac版は準備中です
-        </p>
+        <figure class="hero-shot">
+          <img src="img/m02-home.png" alt="ホーム画面。出欠の未回答や年会費の未納など、次にすることが並んでいる" />
+          <img
+            class="hero-badge"
+            src="img/m15-badge-sample.png"
+            alt="アプリで作った名札。懇親会やお弁当を申し込んだ人に色の印が付いている"
+          />
+        </figure>
       </div>
     </header>
 
     <main>
-      <section class="wrap">
-        <h2>こんな方のために作りました</h2>
+      <section class="wrap pains-section">
+        <h2>こんなことで困っていませんか</h2>
         <ul class="pains">
-          <li>名簿をExcelで管理していて、毎年の担当交代でどれが最新かわからなくなる</li>
+          <li>名簿をExcelで管理していて、毎年の担当交代で、どれが最新かわからなくなる</li>
           <li>研究大会の出欠・参加費・懇親会費の入金を、手作業で照らし合わせている</li>
-          <li>年会費の未納者に、一人ずつメールを書いている</li>
+          <li>年会費の未納の方に、一人ずつメールを書いている</li>
           <li>クラウドの会員管理サービスは、小さな学会には高すぎる</li>
         </ul>
       </section>
 
-      <section class="wrap">
+      <section class="wrap" id="features">
         <h2>できること</h2>
-        <div class="features">
-          <article>
-            <img src="img/m03-members.png" alt="会員名簿の画面" />
+        <div class="feature">
+          <img src="img/m03-members.png" alt="会員名簿の画面" loading="lazy" />
+          <div>
             <h3>会員名簿</h3>
             <p>
-              今あるExcelの名簿をそのまま取り込めます。会員種別（正会員・学生会員など）は学会ごとに自由に決められます。
+              今あるExcelの名簿を、そのまま取り込めます。会員種別（正会員・学生会員など）は、学会ごとに自由に決められます。宛名ラベルも印刷できます。
             </p>
-          </article>
-          <article>
-            <img src="img/m06-event.png" alt="研究大会の画面" />
+          </div>
+        </div>
+        <div class="feature">
+          <img src="img/m06-event.png" alt="研究大会の画面" loading="lazy" />
+          <div>
             <h3>研究大会の受付</h3>
             <p>
-              出欠、参加費・懇親会費などの料金、入金をまとめて管理。未入金の人がひと目でわかります。
+              出欠、参加費・懇親会費などの料金、入金をまとめて管理します。まだ払っていない人が、ひと目でわかります。
             </p>
-          </article>
-          <article>
-            <img src="img/m15-badge-sample.png" alt="色の印が付いた名札" />
+          </div>
+        </div>
+        <div class="feature">
+          <img src="img/m15-badge-sample.png" alt="色の印が付いた名札" loading="lazy" />
+          <div>
             <h3>名札・受付一覧の印刷</h3>
             <p>
-              名刺用紙に合わせた名札をPDFで作れます。お弁当や懇親会を申し込んだ人には、名札に色の印を付けられます。
+              名刺用紙に合わせた名札を、PDFで作れます。お弁当や懇親会を申し込んだ人の名札には、色の印が付きます。
             </p>
-          </article>
-          <article>
-            <img src="img/m09-dues.png" alt="年会費の画面" />
+          </div>
+        </div>
+        <div class="feature">
+          <img src="img/m09-dues.png" alt="年会費の画面" loading="lazy" />
+          <div>
             <h3>年会費</h3>
-            <p>年度ごとに会員種別別の金額を決め、納入・未納を管理。過去の未納もわかります。</p>
-          </article>
-          <article>
-            <img src="img/m10-compose.png" alt="案内メールの作成画面" />
+            <p>年度ごとに会員種別別の金額を決めて、納入・未納を管理します。前の年度の未納もわかります。</p>
+          </div>
+        </div>
+        <div class="feature">
+          <img src="img/m10-compose.png" alt="案内メールを作る画面" loading="lazy" />
+          <div>
             <h3>案内メールの一括送信</h3>
             <p>
-              ご自身のGmailから、名前などを差し込んだメールを一斉に送れます。未納者や未回答者だけに送ることもできます。
+              ご自身のGmailから、名前などを差し込んだメールを一斉に送れます。未納の方や、出欠を返していない方だけに送ることもできます。
             </p>
-          </article>
-          <article>
-            <img src="img/m16-societies.png" alt="学会の切り替え" />
+          </div>
+        </div>
+        <div class="feature">
+          <img src="img/m16-societies.png" alt="学会を切り替える画面" loading="lazy" />
+          <div>
             <h3>年度の引き継ぎ・複数の学会</h3>
             <p>
-              次の担当者には、ファイル1つ渡すだけ。2つ以上の学会を担当していても、データは混ざりません。
+              次の担当者には、ファイルを1つ渡すだけ。2つ以上の学会を担当していても、データは混ざりません。
             </p>
-          </article>
+          </div>
         </div>
       </section>
 
       <section class="wrap safe">
-        <h2>名簿はパソコンの外に保存しません</h2>
-        <div class="cols">
+        <h2>名簿は、パソコンの外に保存しません</h2>
+        <div class="safe-body">
           <p>
-            会員の名前や住所は、<b>担当者のパソコンの中</b>に保存されます。開発者のサーバーはなく、開発者が見ることもできません。インターネットに送るのは、案内メールの宛先・件名・本文だけです（ご自身のGmailから送ります）。
+            会員の名前や住所は、<b>担当者のパソコンの中だけ</b>に保存されます。開発者のサーバーはなく、開発者が見ることもできません。インターネットに送るのは、案内メールの宛先・件名・本文だけです（ご自身のGmailから送ります）。
           </p>
           <ul>
-            <li>Gmailのアプリパスワードは、Windowsの仕組みで暗号化して保存</li>
-            <li>引き継ぎファイルは、パスワードを付けると強い暗号（AES-256）で暗号化</li>
-            <li>
-              BitLocker（ドライブの暗号化）が使えるパソコンなら、その状態をアプリで確かめられます
-            </li>
+            <li>Gmailのアプリパスワードは、Windowsの仕組みで暗号化して保存します</li>
+            <li>引き継ぎファイルは、パスワードを付けると強い暗号（AES-256）で暗号化します</li>
+            <li>BitLocker（ドライブの暗号化）が使えるパソコンなら、その状態をアプリで確かめられます</li>
           </ul>
+          <p class="small">
+            <a href="security.pdf">セキュリティについて（PDF）</a>には、会員の皆さまへのお知らせ文の例も載せています。
+          </p>
         </div>
-        <p>
-          <a href="security.pdf">セキュリティについて（PDF）</a
-          >には、会員の皆さまへのお知らせ文の例も載せています。
-        </p>
       </section>
 
       <section class="wrap" id="start">
@@ -115,67 +141,89 @@
           </li>
           <li><b>フォルダの中の「GakkaiSupport.exe」をダブルクリックします。</b></li>
           <li>
-            <b
-              >青い画面「WindowsによってPCが保護されました」が出たときは、「詳細情報」を押してから「実行」を押します。</b
+            <b>青い画面「WindowsによってPCが保護されました」が出たときは、「詳細情報」を押してから「実行」を押します。</b
             >個人で作っているアプリのため、Windowsが発行元を確認できずに表示されます。2回目からは出ません。
           </li>
           <li>
-            <b>利用規約に同意し、学会名を入れれば始められます。</b>くわしくは<a href="manual.pdf"
+            <b>利用規約に同意して、学会名を入れれば始められます。</b>くわしくは<a href="manual.pdf"
               >使い方説明書（PDF）</a
             >をご覧ください。
           </li>
         </ol>
       </section>
 
-      <section class="wrap beta" id="price">
+      <section class="wrap" id="price">
         <h2>料金</h2>
-        <ul>
-          <li>
-            <b>購入しなくても、すべての機能をお使いいただけます。</b>購入していないあいだは、アプリの画面の上に購入のご案内が出ます。
-          </li>
-          <li>
-            続けてお使いの場合は、ライセンス（<b>3,000円・税込、1回だけの買い切り</b>）をご購入ください。期限はなく、パソコンの台数や担当する学会の数にも制限はありません。
-          </li>
-          <li>お支払いの後、お名前入りの領収書（PDF）が届きます。学会での精算にお使いいただけます。</li>
-        </ul>
-        <p class="cta">
-          <a class="btn primary" href="purchase.html">ライセンスを購入する</a>
-          <a class="btn" href="https://forms.gle/VbX8t63M8UimmP8W7">不具合・問い合わせを送る</a>
-        </p>
-        <p class="note">
-          お問い合わせには、会員の氏名やメールアドレスなどの個人情報、アプリパスワードを書かないでください。
-        </p>
+        <div class="price">
+          <div class="receipt" aria-label="ライセンスの料金">
+            <p class="receipt-title">領収書</p>
+            <p class="receipt-amount">¥3,000<span>（税込）</span></p>
+            <p class="receipt-for">但し　学会運営支援システム ライセンス代として</p>
+            <p class="receipt-note">1回だけのお支払い・期限なし</p>
+          </div>
+          <div class="price-text">
+            <p>
+              <b>購入しなくても、すべての機能をお使いいただけます。</b>購入していないあいだは、アプリの画面の上に購入のご案内が出ます。
+            </p>
+            <p>
+              続けてお使いの場合は、ライセンスをご購入ください。毎年の料金はかからず、パソコンの台数や担当する学会の数にも制限はありません。
+            </p>
+            <p>お支払いの後、お名前入りの領収書（PDF）が届きます。学会での精算にお使いいただけます。</p>
+            <div class="cta">
+              <a class="btn primary" href="purchase.html">ライセンスを購入する</a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="wrap faq">
         <h2>よくある質問</h2>
-        <dl>
-          <dt>Macでは使えますか？</dt>
-          <dd>いまはWindows版だけです。Mac版は準備中です。</dd>
-          <dt>大学のGmailでもメールを送れますか？</dt>
-          <dd>
+        <details>
+          <summary>Macでは使えますか？</summary>
+          <p>いまはWindows版だけです。Mac版は準備中です。</p>
+        </details>
+        <details>
+          <summary>大学のGmailでもメールを送れますか？</summary>
+          <p>
             はい。Googleの「アプリパスワード」（16文字）を一度設定すれば送れます。大学の設定でアプリパスワードが作れない場合は、学内の情報担当の部署にご相談ください。
-          </dd>
-          <dt>前の担当者のExcel名簿は使えますか？</dt>
-          <dd>
+          </p>
+        </details>
+        <details>
+          <summary>前の担当者のExcel名簿は使えますか？</summary>
+          <p>
             はい。氏名・所属・メールアドレス・住所・会員種別の列があれば取り込めます。アプリの中に名簿のひな形もあります。
-          </dd>
-          <dt>新しい版にしたら、データは消えますか？</dt>
-          <dd>
+          </p>
+        </details>
+        <details>
+          <summary>新しい版にしたら、データは消えますか？</summary>
+          <p>
             消えません。データはアプリとは別の場所に保存されているので、新しい版のフォルダに入れ替えるだけで続きから使えます。
-          </dd>
-        </dl>
+          </p>
+        </details>
+        <details>
+          <summary>次の年度の担当者も、ライセンスを買う必要がありますか？</summary>
+          <p>
+            はい。ライセンスはご購入された方ご本人のもので、引き継ぎファイルには入りません。購入しなくてもすべての機能は使えます。
+          </p>
+        </details>
+        <p class="ask">
+          ほかにわからないことは、<a href="https://forms.gle/VbX8t63M8UimmP8W7">問い合わせフォーム</a
+          >からお寄せください。会員の氏名やメールアドレスなどの個人情報、アプリパスワードは書かないでください。
+        </p>
       </section>
     </main>
 
     <footer>
       <div class="wrap">
-        <p>
-          <a href="purchase.html">ライセンスの購入</a>　｜　<a href="terms.html">利用規約</a>　｜　<a href="privacy.html">プライバシーポリシー</a
-          >　｜　<a href="tokushoho.html">特定商取引法に基づく表記</a>　｜　<a href="manual.pdf">使い方説明書</a>　｜　<a href="security.pdf"
-            >セキュリティについて</a
-          >　｜　<a href="https://forms.gle/VbX8t63M8UimmP8W7">問い合わせ</a>
-        </p>
+        <ul class="footer-links">
+          <li><a href="purchase.html">ライセンスの購入</a></li>
+          <li><a href="manual.pdf">使い方説明書（PDF）</a></li>
+          <li><a href="security.pdf">セキュリティについて（PDF）</a></li>
+          <li><a href="https://forms.gle/VbX8t63M8UimmP8W7">問い合わせ</a></li>
+          <li><a href="terms.html">利用規約</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="tokushoho.html">特定商取引法に基づく表記</a></li>
+        </ul>
         <p>運営：井元 駿</p>
       </div>
     </footer>
