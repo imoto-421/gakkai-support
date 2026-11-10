@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>学会運営支援システム 紹介資料</title>
+    <!-- 紹介資料（A4 2枚）の元。PDF にするには README の「紹介資料を作り直すとき」を見てください -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Sans+JP:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 色は配布ページ（style.css）と同じ */
+      :root {
+        --paper: #fdfefe;
+        --tint: #f2f7f6;
+        --ink: #1d2a28;
+        --muted: #55625f;
+        --rule: #d4e0dd;
+        --main: #17695f;
+        --deep: #0f4d45;
+        --wash: #e3f1ee;
+        --cta: #d99a1e;
+        --mark: #f5e2b0;
+        --on-main: #f6fbfa;
+        --display: "IBM Plex Sans JP", "BIZ UDPGothic", "Yu Gothic UI", sans-serif;
+        --gothic: "BIZ UDPGothic", "Yu Gothic UI", "Meiryo", sans-serif;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: #888;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        color: var(--ink);
+        font-family: var(--gothic);
+        font-size: 9.2pt;
+        line-height: 1.62;
+      }
+      @media print {
+        body {
+          background: none;
+        }
+      }
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto 8mm;
+        background: var(--paper);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+        break-after: page;
+      }
+      .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+        margin-bottom: 0;
+      }
+      @media print {
+        .page {
+          margin: 0;
+        }
+      }
+      h1,
+      h2,
+      h3,
+      .fig,
+      .brand,
+      .price b {
+        font-family: var(--display);
+      }
+      h2 {
+        font-size: 13pt;
+        font-weight: 700;
+        color: var(--deep);
+        margin: 0 0 3mm;
+        padding-bottom: 1.5mm;
+        border-bottom: 0.6mm solid var(--main);
+        line-height: 1.4;
+      }
+      h3 {
+        font-size: 10.5pt;
+        color: var(--deep);
+        margin: 0 0 1mm;
+        line-height: 1.4;
+      }
+      p {
+        margin: 0;
+      }
+      ul {
+        margin: 0;
+        padding-left: 1.2em;
+      }
+      .key {
+        background: linear-gradient(transparent 62%, var(--mark) 62%);
+      }
+      .body {
+        padding: 6mm 14mm 5mm;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4.5mm;
+      }
+
+      /* 1枚目の上の帯 */
+      .head {
+        background: var(--main);
+        color: var(--on-main);
+        padding: 8mm 14mm 7mm;
+        display: grid;
+        grid-template-columns: 1fr 70mm;
+        gap: 8mm;
+        align-items: center;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 2.5mm;
+        font-size: 10.5pt;
+        font-weight: 700;
+        margin-bottom: 4mm;
+      }
+      .brand img {
+        width: 7mm;
+        height: 7mm;
+        background: var(--paper);
+        padding: 0.6mm;
+      }
+      .head h1 {
+        font-size: 19pt;
+        line-height: 1.45;
+        margin: 0 0 3mm;
+        letter-spacing: 0.02em;
+      }
+      .head .sub {
+        font-size: 10pt;
+      }
+      .head img.shot {
+        width: 100%;
+        border: 1.5mm solid rgba(246, 251, 250, 0.16);
+      }
+      .facts {
+        background: var(--wash);
+        padding: 3.5mm 14mm;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+      .facts p {
+        background: var(--paper);
+        text-align: center;
+        padding: 2.5mm 2mm;
+        line-height: 1.4;
+      }
+      .facts .fig {
+        display: block;
+        font-size: 15pt;
+        font-weight: 700;
+        color: var(--deep);
+      }
+      .facts span {
+        font-size: 8.5pt;
+        color: var(--muted);
+      }
+
+      /* できること */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm 5mm;
+      }
+      .features > div {
+        border-top: 0.8mm solid var(--cta);
+        padding-top: 2mm;
+      }
+      .features p {
+        font-size: 9pt;
+      }
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+        margin-top: 3.5mm;
+      }
+      .shots figure {
+        margin: 0;
+      }
+      .shots img {
+        width: 100%;
+        border: 0.3mm solid var(--rule);
+        display: block;
+        height: 25mm;
+        object-fit: cover;
+        object-position: top left;
+      }
+      .shots figcaption {
+        font-size: 8pt;
+        color: var(--muted);
+        margin-top: 1mm;
+      }
+
+      /* 名簿の扱い */
+      .safe {
+        background: var(--tint);
+        padding: 4mm 5mm;
+      }
+      .safe .lead {
+        margin-bottom: 3mm;
+      }
+      .cols3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+      .cols3 > div {
+        background: var(--paper);
+        border: 0.3mm solid var(--rule);
+        padding: 3mm 3.5mm;
+        font-size: 9pt;
+      }
+
+      /* 向き・不向き */
+      .fit {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4mm;
+      }
+      .fit > div {
+        border: 0.3mm solid var(--rule);
+        padding: 3mm 4mm;
+      }
+      .fit .yes {
+        border-top: 1mm solid var(--main);
+      }
+      .fit .no {
+        border-top: 1mm solid var(--muted);
+      }
+
+      /* 比べ方 */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8.8pt;
+        line-height: 1.5;
+      }
+      th,
+      td {
+        border: 0.3mm solid var(--rule);
+        padding: 1.1mm 2.5mm;
+        text-align: left;
+        vertical-align: top;
+      }
+      thead th {
+        background: var(--wash);
+        font-weight: 700;
+      }
+      tbody th {
+        background: var(--tint);
+        white-space: nowrap;
+      }
+      .me {
+        background: var(--wash);
+      }
+      thead .me {
+        background: var(--main);
+        color: var(--on-main);
+      }
+      .note {
+        font-size: 8.3pt;
+        color: var(--muted);
+        margin-top: 1.5mm;
+      }
+
+      /* 料金・始め方 */
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6mm;
+      }
+      .price {
+        background: var(--main);
+        color: var(--on-main);
+        padding: 2.5mm 4mm;
+        margin-bottom: 2.5mm;
+        display: flex;
+        align-items: baseline;
+        gap: 3mm;
+      }
+      .price b {
+        font-size: 18pt;
+      }
+      dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 19mm 1fr;
+        font-size: 9pt;
+        line-height: 1.55;
+      }
+      dt {
+        font-weight: 700;
+        color: var(--deep);
+        padding: 1.2mm 0;
+        border-bottom: 0.3mm solid var(--rule);
+      }
+      dd {
+        margin: 0;
+        padding: 1.2mm 0;
+        border-bottom: 0.3mm solid var(--rule);
+      }
+      ol.steps {
+        list-style: none;
+        counter-reset: s;
+        margin: 0;
+        padding: 0;
+        font-size: 9pt;
+      }
+      ol.steps li {
+        counter-increment: s;
+        position: relative;
+        padding: 0 0 1.6mm 9mm;
+        line-height: 1.55;
+      }
+      ol.steps li::before {
+        content: counter(s);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6mm;
+        height: 6mm;
+        background: var(--main);
+        color: var(--on-main);
+        font-family: var(--display);
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+        font-size: 9pt;
+      }
+
+      /* 約束していること */
+      .promise {
+        border: 0.5mm solid var(--main);
+        padding: 3.5mm 5mm;
+      }
+      .promise ul {
+        columns: 2;
+        column-gap: 8mm;
+        font-size: 9pt;
+      }
+      .promise li {
+        break-inside: avoid;
+        margin-bottom: 0.5mm;
+      }
+
+      /* 下の帯 */
+      .foot {
+        margin-top: auto;
+        background: var(--deep);
+        color: var(--on-main);
+        padding: 3mm 14mm;
+        display: flex;
+        align-items: center;
+        gap: 6mm;
+        font-size: 8.8pt;
+        line-height: 1.6;
+      }
+      .foot .qr {
+        background: var(--paper);
+        padding: 1.5mm;
+        width: 19mm;
+        height: 19mm;
+        flex: none;
+      }
+      .foot .qr img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .foot b {
+        font-family: var(--display);
+        font-size: 10.5pt;
+      }
+      .foot .url {
+        font-family: var(--display);
+        font-size: 10pt;
+      }
+      .foot .right {
+        margin-left: auto;
+        text-align: right;
+      }
+      .pg {
+        font-size: 8pt;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1枚目 -->
+    <section class="page">
+      <header class="head">
+        <div>
+          <p class="brand"><img src="../img/icon.png" alt="" />学会運営支援システム　紹介資料</p>
+          <h1>担当が替わっても迷わない、<br />小さな学会の事務の道具</h1>
+          <p class="sub">
+            会員名簿・研究大会・年会費・案内メール・名札・年度の引き継ぎを、担当者のパソコン1台で管理する
+            Windows のアプリです。
+          </p>
+        </div>
+        <img class="shot" src="../img/m02-home.png" alt="" />
+      </header>
+      <div class="facts">
+        <p><span class="fig">3,000円</span><span>1回だけのお支払い・税込</span></p>
+        <p><span class="fig">パソコンの中だけ</span><span>名簿を外に保存しません</span></p>
+        <p><span class="fig">全機能を無料で</span><span>購入の前に、期限なく試せます</span></p>
+      </div>
+
+      <div class="body">
+        <section>
+          <h2>何ができるか</h2>
+          <div class="features">
+            <div>
+              <h3>会員名簿</h3>
+              <p>今ある Excel の名簿をそのまま取り込めます。会員種別は学会ごとに自由に決められ、宛名ラベルも印刷できます。</p>
+            </div>
+            <div>
+              <h3>研究大会の受付</h3>
+              <p>出欠、参加費・懇親会費などの料金と入金をまとめて管理。まだ払っていない人がひと目でわかります。</p>
+            </div>
+            <div>
+              <h3>名札・受付一覧の印刷</h3>
+              <p>名刺用紙に合わせた名札を PDF で作れます。お弁当や懇親会を申し込んだ人には色の印が付きます。</p>
+            </div>
+            <div>
+              <h3>年会費</h3>
+              <p>年度ごと・会員種別ごとに金額を決めて、納入と未納を管理。前の年度の未納もわかります。</p>
+            </div>
+            <div>
+              <h3>案内メールの一括送信</h3>
+              <p>ご自身の Gmail から、名前などを差し込んだメールを一斉に送れます。未納の方だけ、などの絞り込みもできます。</p>
+            </div>
+            <div>
+              <h3>年度の引き継ぎ・複数の学会</h3>
+              <p>次の担当者にはファイルを1つ渡すだけ。2つ以上の学会を担当していても、データは混ざりません。</p>
+            </div>
+          </div>
+          <div class="shots">
+            <figure>
+              <img src="../img/m03-members.png" alt="" />
+              <figcaption>会員名簿の画面</figcaption>
+            </figure>
+            <figure>
+              <img src="../img/m06-event.png" alt="" />
+              <figcaption>研究大会の画面</figcaption>
+            </figure>
+            <figure>
+              <img src="../img/m09-dues.png" alt="" />
+              <figcaption>年会費の画面</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="safe">
+          <h2>名簿の扱い</h2>
+          <p class="lead">
+            会員の名前や住所は、<span class="key">担当者のパソコンの中だけ</span>に保存されます。開発者のサーバーはなく、開発者が名簿を見ることもできません。
+          </p>
+          <div class="cols3">
+            <div>
+              <h3>送るのはメールだけ</h3>
+              <p>インターネットに送るのは、案内メールの宛先・件名・本文だけ。担当者ご自身の Gmail から送ります。</p>
+            </div>
+            <div>
+              <h3>パスワードは暗号化</h3>
+              <p>Gmail のアプリパスワードは Windows の仕組みで暗号化して保存。引き継ぎファイルもパスワードで暗号化（AES-256）できます。</p>
+            </div>
+            <div>
+              <h3>パソコンの管理は担当者で</h3>
+              <p>ログインのパスワードや紛失への備えは、担当者の責任です。BitLocker（ドライブの暗号化）をおすすめしています。</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="foot">
+        <div class="qr"><img src="qr-site.svg" alt="" /></div>
+        <div>
+          <b>配布ページ（ダウンロード・説明書・お問い合わせ）</b><br />
+          <span class="url">imoto-421.github.io/gakkai-support/</span>
+        </div>
+        <p class="right pg">1 / 2</p>
+      </footer>
+    </section>
+
+    <!-- 2枚目 -->
+    <section class="page">
+      <div class="body" style="padding-top: 9mm">
+        <section>
+          <h2>向いている学会・向いていない学会</h2>
+          <div class="fit">
+            <div class="yes">
+              <h3>向いています</h3>
+              <ul>
+                <li>会員が数十〜数百人で、事務の担当者が1人</li>
+                <li>名簿を Excel で持っている</li>
+                <li>担当者が Windows のパソコンと Gmail を使える</li>
+                <li>事務の費用を、できるだけかけたくない</li>
+              </ul>
+            </div>
+            <div class="no">
+              <h3>ほかの方法をおすすめします</h3>
+              <ul>
+                <li>参加者が Web で申し込み、カードで払う形にしたい</li>
+                <li>演題の登録や査読もシステムで行いたい</li>
+                <li>何人かで同時に名簿を直したい</li>
+                <li>Mac しか使わない（いまは Windows 版だけ）</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>ほかの方法との比べ方</h2>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Excel と手作業</th>
+                <th>クラウドの会員管理・大会のサービス</th>
+                <th class="me">このアプリ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>費用</th>
+                <td>かからない</td>
+                <td>毎月、または大会ごとにかかることが多い</td>
+                <td class="me">3,000円を1回だけ</td>
+              </tr>
+              <tr>
+                <th>名簿の置き場所</th>
+                <td>担当者のパソコン</td>
+                <td>サービスの会社のサーバー</td>
+                <td class="me">担当者のパソコン</td>
+              </tr>
+              <tr>
+                <th>入金の確認・督促</th>
+                <td>手作業</td>
+                <td>まとめてできる</td>
+                <td class="me">まとめてできる</td>
+              </tr>
+              <tr>
+                <th>会員が Web で申し込む</th>
+                <td>できない</td>
+                <td>できる</td>
+                <td class="me">できない</td>
+              </tr>
+              <tr>
+                <th>何人かで同時に使う</th>
+                <td>難しい</td>
+                <td>できる</td>
+                <td class="me">できない（担当者1人向け）</td>
+              </tr>
+              <tr>
+                <th>サポート</th>
+                <td>なし</td>
+                <td>担当者がいることが多い</td>
+                <td class="me">問い合わせフォームのみ</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note">このアプリの弱いところも載せています。合わないと感じたら、ほかの方法をお選びください。</p>
+        </section>
+
+        <div class="two">
+          <section>
+            <h2>料金と精算</h2>
+            <p class="price"><b>3,000円</b>税込・1回だけ（毎年の料金なし）</p>
+            <dl>
+              <dt>試用</dt>
+              <dd>購入しなくても、すべての機能を期限なく使えます（画面に購入の案内が出ます）</dd>
+              <dt>使える範囲</dt>
+              <dd>購入したご本人。パソコンの台数・学会の数に制限なし</dd>
+              <dt>支払い</dt>
+              <dd>クレジットカードのみ（請求書払い・振込には対応していません）</dd>
+              <dt>領収書</dt>
+              <dd>お名前入りの PDF がメールで届きます。経費にできるかは、学会でお決めください</dd>
+              <dt>返金</dt>
+              <dd>原則なし（重ねて購入した場合を除く）</dd>
+            </dl>
+          </section>
+          <section>
+            <h2>始めるまでの流れ</h2>
+            <ol class="steps">
+              <li>配布ページから zip ファイルをダウンロードし、右クリック →「すべて展開」</li>
+              <li>
+                「GakkaiSupport.exe」をダブルクリック。青い画面が出たら「詳細情報」→「実行」（個人で作っているため。2回目からは出ません）
+              </li>
+              <li>利用規約に同意して、学会名を入れる</li>
+              <li>今の Excel 名簿を取り込み、そのまま試す</li>
+              <li>続けて使うときは、配布ページから購入。3日以内に届くコードを「設定」に貼り付ける</li>
+            </ol>
+          </section>
+        </div>
+
+        <section class="promise">
+          <h2 style="border: 0; padding: 0">約束していること</h2>
+          <ul>
+            <li>個人（井元 駿）で開発・販売しています</li>
+            <li>名簿はパソコンの外に保存しません</li>
+            <li>完成した版として販売し、機能の追加はしません</li>
+            <li>起動しない・データが壊れるなど、重大な不具合は直します（時期は約束できません）</li>
+            <li>配布を終えても、手元のアプリとライセンスはそのまま使えます</li>
+            <li>お問い合わせは、配布ページのフォームで受け付けます</li>
+          </ul>
+        </section>
+      </div>
+
+      <footer class="foot">
+        <div class="qr"><img src="qr-site.svg" alt="" /></div>
+        <div>
+          <b>まずは、今の名簿を入れて試してみてください</b><br />
+          <span class="url">imoto-421.github.io/gakkai-support/</span><br />
+          運営：井元 駿
+        </div>
+        <p class="right pg">2 / 2</p>
+      </footer>
+    </section>
+  </body>
+</html>
