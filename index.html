@@ -362,14 +362,41 @@
           <p class="lead reveal">
             ご意見・不具合・ご質問は、このフォームからお送りください。会員の氏名やメールアドレスなどの個人情報、アプリパスワードは書かないでください。
           </p>
-          <div class="form-frame reveal">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSem8YQPxwCaP0HrP6B142q8EgZJPiNtuUG9WSnMsW8UcndIjw/viewform?embedded=true"
-              title="お問い合わせフォーム（Googleフォーム）"
-              loading="lazy"
-              >読み込んでいます…</iframe
-            >
-          </div>
+          <!-- 送った内容は Google フォームに届く。entry.… は Google フォームの質問の番号（質問を作り直したら、ここも直す） -->
+          <form
+            class="cform reveal"
+            id="cform"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSem8YQPxwCaP0HrP6B142q8EgZJPiNtuUG9WSnMsW8UcndIjw/formResponse"
+            method="post"
+          >
+            <fieldset>
+              <legend>ご用件<span class="req">必須</span></legend>
+              <div class="choices">
+                <label><input type="radio" name="entry.1025865740" value="ご意見" required />ご意見</label>
+                <label><input type="radio" name="entry.1025865740" value="不具合" />不具合</label>
+                <label><input type="radio" name="entry.1025865740" value="質問" />質問</label>
+                <label><input type="radio" name="entry.1025865740" value="その他" />その他</label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="cf-body">内容<span class="req">必須</span></label>
+              <p class="hint" id="cf-body-hint">
+                不具合のときは、何をしたときに、どうなったかを書いてください。アプリの版（「設定」→「ライセンス・アプリ」）も書いていただけると助かります。
+              </p>
+              <textarea id="cf-body" name="entry.1691068815" rows="7" required aria-describedby="cf-body-hint"></textarea>
+            </div>
+            <div class="field">
+              <label for="cf-mail">返信先のメールアドレス<span class="opt">返信が必要なときだけ</span></label>
+              <input id="cf-mail" type="email" name="entry.2141547957" autocomplete="email" inputmode="email" />
+            </div>
+            <div class="cform-foot">
+              <button class="btn cta" type="submit">送信する</button>
+              <p class="note">
+                送った内容は、Google フォームを通して運営者に届きます。扱いは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。
+              </p>
+            </div>
+            <p class="cform-msg" id="cform-msg" role="status" hidden></p>
+          </form>
         </div>
       </section>
 
@@ -423,6 +450,45 @@
       </div>
     </footer>
 
+    <script>
+      // お問い合わせ：ページを移らずに Google フォームへ送る。
+      // スクリプトが動かないときは、ふつうに送られて Google の「送信しました」の画面に移る
+      (function () {
+        var form = document.getElementById("cform");
+        var msg = document.getElementById("cform-msg");
+        if (!form || !window.fetch) return;
+        form.addEventListener("submit", function (ev) {
+          ev.preventDefault();
+          var btn = form.querySelector("button[type=submit]");
+          btn.disabled = true;
+          btn.textContent = "送信しています…";
+          // Google からの返事は読めない（no-cors）。届いたかどうかは、通信が失敗しなかったことで判断する
+          fetch(form.action, {
+            method: "POST",
+            mode: "no-cors",
+            body: new URLSearchParams(new FormData(form)),
+          })
+            .then(function () {
+              form.reset();
+              msg.className = "cform-msg ok";
+              msg.textContent = "送信しました。お問い合わせありがとうございます。返信が必要なものには、順にお返事します。";
+            })
+            .catch(function () {
+              msg.className = "cform-msg ng";
+              msg.innerHTML =
+                '送信できませんでした。インターネットにつながっているか確かめて、もう一度お試しください。うまくいかないときは、<a href="https://forms.gle/VbX8t63M8UimmP8W7">Google フォームの画面</a>からお送りください。';
+            })
+            .finally(function () {
+              msg.hidden = false;
+              btn.disabled = false;
+              btn.textContent = "送信する";
+              // 読み上げソフトの人にも結果が伝わるよう、知らせの位置へ移る
+              msg.setAttribute("tabindex", "-1");
+              msg.focus();
+            });
+        });
+      })();
+    </script>
     <script>
       // 画面に入ったものから、順に現れる
       (function () {
